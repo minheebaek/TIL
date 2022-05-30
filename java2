@@ -1,0 +1,24 @@
+package project;
+class A{
+    int a;
+    public A(int n){
+        a=n;
+    }
+    public void print() {
+        System.out.println("a="+a);
+    }
+}
+class B extends A { //상속 받은 클래스의 부모가 생성자 갖고 있다면 자식도 반드시 있어야함
+    public B(int n){
+        super(n); //super은 부모 클래스의 생성자라 할 수 있다. 
+        super.print(); //super은 부모클래스에 있는 생성자를 실행시킴
+    }
+}
+public class Main {
+
+    public static void main(String[] args) {
+       B obj = new B(10);
+       
+    }
+
+}
