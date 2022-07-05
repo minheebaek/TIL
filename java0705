@@ -1,0 +1,16 @@
+public static void main(String[] args) {
+		//예제 4-12 (1)
+		int i = 4;
+		while (i >= 0) {
+			System.out.printf("%d - I can do it.%n", i);
+			i--;
+		}
+		
+		System.out.println("============");
+		//예제 4-12 (2)
+		//1부터 몇까지 더해야 100을 넘지 않는지 
+		int j=5;
+		while(j--!=0) {
+			System.out.println();
+		}
+	}
