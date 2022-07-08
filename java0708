@@ -1,0 +1,72 @@
+public class 연습6 {
+
+	public static void main(String[] args) {
+    //예제 6-1
+		Tv t; // 리모콘
+		t = new Tv(); // 객체 생성
+		t.channel = 7;
+		t.channelDown(); // 6
+		System.out.println("TV채널은 " + t.channel + "번 입니다.");
+
+	}
+
+}
+
+class tv {
+	// 속성(변수)
+	String color;
+	boolean power;
+	int channel;
+
+	// 기능(메서드)
+	void power() {
+		power = !power;
+	}
+
+	void channelUp() {
+		++channel;
+	}
+
+	void channelDown() {
+		--channel;
+	}
+}
+
+public class 연습6 {
+
+	public static void main(String[] args) {
+		// 예제 6-2
+		Tv t1 = new Tv();
+		Tv t2 = new Tv();
+		System.out.println("t1의 채널은 " + t1.channel + "입니다.");
+		System.out.println("t2의 채널은 " + t2.channel + "입니다.");
+
+		t1.channel = 7;
+		System.out.println("t1 채널을 7로 변경했습니다.");
+
+		System.out.println("t1의 채널은 " + t1.channel + "입니다.");
+		System.out.println("t2의 채널은 " + t2.channel + "입니다.");
+
+	}
+
+}
+
+class tv {
+	// 속성(변수)
+	String color;
+	boolean power;
+	int channel;
+
+	// 기능(메서드)
+	void power() {
+		power = !power;
+	}
+
+	void channelUp() {
+		++channel;
+	}
+
+	void channelDown() {
+		--channel;
+	}
+}
