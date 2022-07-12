@@ -255,3 +255,82 @@ public static void main(String[] args) {
 		}
 		System.out.println(Arrays.toString(numArr));
 	}
+	
+	public static void main(String[] args) {
+		// 예제5-5
+		// 로또 번호 만들기 1~45
+
+		int[] ball = new int[45]; // 인덱스 0~44
+		for (int i = 0; i < ball.length; i++) { // 배열에 공번호 저장 0~44 -> 1~45
+			ball[i] = i + 1;
+		}
+		int tmp = 0;
+		for (int i = 0; i < 6; i++) {
+			int n = (int) (Math.random() * 45); // 난수는 인덱스의 범위인 0~44를 넘지 않아야함
+			tmp = ball[i];
+			ball[i] = ball[n];
+			ball[n] = tmp;
+		}
+		for (int i = 0; i < 6; i++) {
+			System.out.printf("ball[" + i + "] = " + ball[i] + "%n");
+		}
+
+	}
+	public static void main(String[] args) {
+		// 예제 5-6
+		String[] names = { "Kim", "Park", "Yi" };
+
+		for (int i = 0; i < names.length; i++) {
+			System.out.println("names[" + i + "]:" + names[i]);
+		}
+
+		String tmp = names[2];
+		System.out.println("tmp:" + tmp);
+		names[0] = "Yu";
+		
+		for (int i = 0; i < names.length; i++) {
+			System.out.println(names[i]);
+		}
+
+	}
+	public static void main(String[] args) {
+		//p.144
+		String str1 = "ABCDE";
+		char ch = str1.charAt(3); // D 저장
+		System.out.println(ch);
+
+		String str2 = "012345";
+		String tmp = str2.substring(1, 4); // 1~3 저장
+		System.out.println(tmp);
+ 
+		String str ="abc";
+		if (str.equals("abc")) {
+			System.out.println("yes");
+		}
+	}	
+public static void main(String[] args) {
+		//p.153
+		int[] arr = { 0, 1, 2, 3, 4 };
+		int[][] arr2D = { { 11, 12 }, { 21, 22 } };
+		System.out.println(Arrays.toString(arr));
+		System.out.println(Arrays.deepToString(arr2D));
+
+		String[][] str2D = new String[][] { { "aaa", "bbb" }, { "AAA", "BBB" } };
+		String[][] str2D2 = new String[][] { { "aaa", "bbb" }, { "AAA", "BBB" } };
+
+		System.out.println(Arrays.equals(arr2D, str2D2)); // false
+		System.out.println(Arrays.deepEquals(str2D, str2D2)); // true
+
+		int[] arr1 = { 0, 1, 2, 3, 4 };
+		int[] arr2 = Arrays.copyOf(arr1, arr1.length);// [0,1,2,3,4]
+		int[] arr3 = Arrays.copyOf(arr1, 3); // [0,1,2]
+		int[] arr4 = Arrays.copyOf(arr1, 7); // [0,1,2,3,4,0,0]
+		int[] arr5 = Arrays.copyOfRange(arr1, 2, 4); // [2,3]
+		int[] arr6 = Arrays.copyOfRange(arr1, 0, 7); // [0,1,2,3,4,0,0]
+
+		// 배열 정렬 sort
+		int[] arr0 = { 3, 2, 0, 1, 4 };
+		Arrays.sort(arr0); // 배열 정렬함
+		System.out.println(Arrays.toString(arr0));
+
+	}
