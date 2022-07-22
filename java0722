@@ -33,3 +33,20 @@ public class Ex6_15 {
 
 	}
 }
+public class 연습6_4 {
+	static double getDistance(int x, int y, int x1, int y1) {
+		double xd = Math.pow(x1 - x, 2);
+		double yd = Math.pow(y1 - y, 2);
+
+		double result = Math.sqrt(xd + yd);
+
+		return result;
+	}
+
+	public static void main(String[] args) {
+		System.out.println(getDistance(1, 1, 2, 2));
+
+	}
+
+}
+
