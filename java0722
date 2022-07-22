@@ -49,4 +49,31 @@ public class 연습6_4 {
 	}
 
 }
+class Mypoint {
+	int x;
+	int y;
+
+	Mypoint(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	double getDistance(int x2, int y2) {
+		double xd, yd;
+		xd = Math.pow((x2 - x), 2);
+		yd = Math.pow((y2 - y), 2);
+
+		return Math.sqrt(xd + yd);
+
+	}
+}
+
+public class 연습6-6 {
+
+	public static void main(String[] args) {
+		Mypoint p = new Mypoint(1, 1);
+
+		System.out.println(p.getDistance(2, 2));
+	}
+}
 
