@@ -15,3 +15,16 @@ public class 연습6_21 { // 조상클래스
 	}
 
 }
+public class 연습6_21 { // 조상클래스
+	static int abs(int value) { // 다 lv니까 static
+		return value >= 0 ? value : -value;
+	}
+
+	public static void main(String[] args) {
+		int value = 5; // lv
+		System.out.println(value + "의 절대값:" + abs(value));
+		value = -10;
+		System.out.println(value + "의 절대값:" + abs(value));
+	}
+
+}
