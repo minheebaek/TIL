@@ -87,4 +87,43 @@ public class OverrideTest {
 //		System.out.println(p.y);
 	}
 }
+class Tv {
+	boolean Power;
+	int channel;
+
+	void Power() {
+		Power = !Power;
+	}
+
+	void channelUp() {
+		++channel;
+	}
+
+	void channelDown() {
+		--channel;
+	}
+
+}
+
+class SmartTv extends Tv {
+	boolean caption; // 자막기능 on/off
+
+	void displayCaption(String text) {
+		if (caption) {
+			System.out.println(text);
+		}
+	}
+}
+
+class Ex7_1 {
+	public static void main(String[] args) {
+		SmartTv s = new SmartTv();
+		s.channel = 10;
+		s.channelUp();
+		System.out.println(s.channel);
+		s.displayCaption("hello world");
+		s.caption = true;
+		s.displayCaption("hello world"); // 객체의 메서드, 변수 호출시 리모콘 잊지말자
+	}
+}
 
