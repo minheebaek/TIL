@@ -1,0 +1,21 @@
+class Ex7_2 {
+	public static void main(String[] args) {
+		Child c = new Child();
+		c.method();
+	}
+}
+
+class Parent {
+	int x = 10;
+	/* super.x */ }
+
+class Child extends Parent {
+	int x = 20; // Parent의 변수 이름과 같으면 Parent의 변수를 구별할때 super 사용
+	// this.x
+
+	void method() {
+		System.out.println("x=" + x);
+		System.out.println("this.x=" + this.x);
+		System.out.println("super.x=" + super.x);
+	}
+}
