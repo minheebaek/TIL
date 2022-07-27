@@ -19,3 +19,23 @@ class Child extends Parent {
 		System.out.println("super.x=" + super.x);
 	}
 }
+
+class Ex7_3 {
+	public static void main(String[] args) {
+		Child c = new Child();
+		c.method();
+	}
+}
+
+class Parent2 {
+	int x = 10;
+	/* super.x */ }
+
+class Child extends Parent2 {
+	//인스턴스 변수 없을때 x, this.x, super.x 모두 같은 변수를 의미한다.
+	void method() {
+		System.out.println("x=" + x);
+		System.out.println("this.x=" + this.x);
+		System.out.println("super.x=" + super.x);
+	}
+}
