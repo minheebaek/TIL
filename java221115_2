@@ -1,0 +1,266 @@
+<예제 4-5>
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        //100~98 + 90~93 - 90:a /// 80~89 b
+       int score;
+       char grade=' ', opt='0';
+       System.out.println("당신의 성적을 입력하세요.");
+       Scanner scan = new Scanner(System.in);
+       String num = scan.next();
+       score=Integer.parseInt(num);
+        System.out.printf("당신의 성적은 %d 입니다.%n",score);
+
+       if(score>=90){
+           grade='A';
+           if(score>=98){
+               opt='+';
+           }
+           else if (score<94){
+               opt='-';
+           }
+       }
+       else if(score>=80){
+           grade='B';
+           if (score>=88){
+               opt='+';
+           }
+           else if(score<84){
+               opt='-';
+           }
+       }
+       else{
+           grade='C';
+       }
+        System.out.printf("당신의 성적은 %c%c 입니다.",grade,opt);
+    }
+    }
+
+<예제 4-4>
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        int score;
+        char grade=' ';
+
+        System.out.println("점수를 입력하세요.>");
+        Scanner scan = new Scanner(System.in);
+        String str = scan.nextLine();
+        score = Integer.parseInt(str);
+
+        if(score>=90){
+            grade='A';
+        }
+        else if(score>=80){
+            grade='B';
+        }
+        else if(score>=70){
+            grade='C';
+        }
+        else{
+            grade='D';
+        }
+        System.out.println("당신의 학점은 "+grade+" 입니다.");
+    }
+    }
+
+<예제 4-3>
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        int input;
+
+        System.out.println("숫자 하나를 입력하세요");
+        Scanner scan = new Scanner(System.in);
+        String tmp = scan.nextLine();
+        input = Integer.parseInt(tmp); //문자열을 숫자로 변환하는 메서드
+
+        if(input==0){
+            System.out.println("입력하신 숫자는 0입니다.");
+        }
+        else{
+            System.out.println("입력하신 숫자는 0이 아닙니다.");
+        }
+    }
+    }
+
+<예제 4-2>
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        int input;
+
+        System.out.println("숫자 하나를 입력하세요");
+        Scanner scan = new Scanner(System.in);
+        String tmp = scan.nextLine();
+        input = Integer.parseInt(tmp); //문자열을 숫자로 변환하는 메서드
+
+        if(input==0){
+            System.out.println("입력하신 숫자는 0입니다.");
+        }
+
+        if(input != 0) {
+            System.out.println("입력하신 숫자는 0이 아닙니다.");
+            System.out.printf("입력하신 숫자는 %d 입니다.", input);
+        }
+    }
+    }
+
+<예제 4-1>
+public class Main {
+    public static void main(String[] args) {
+    int x =0;
+        System.out.printf("x=%d일 때, 참인 것은 %n",x);
+
+        if(x==0) System.out.println("x==0");
+        if(x!=0) System.out.println("x!=0");
+        if(!(x==0)) System.out.println("!(x==0)");
+        if(!(x!=0)) System.out.println("!(x!=0)");
+
+        x=1;
+        System.out.printf("x=%d일 때, 참인 것은 %n",x);
+        if(x==0) System.out.println("x==0");
+        if(x!=0) System.out.println("x!=0");
+        if(!(x==0)) System.out.println("!(x==0)");
+        if(!(x!=0)) System.out.println("!(x!=0)");
+    }
+    }
+
+
+<예제 3-10>
+public class Operator {
+    public static void main(String[] args) {
+         int a = 1000000;
+
+         int result1 = a * a / a;
+         int result2 = a / a * a;
+
+        System.out.printf("%d * %d / %d =%d%n",a,a,a,result1 );
+        System.out.printf("%d / %d * %d = %d%n",a,a,a,result2);
+    }
+}
+
+<예제 3-9>
+public class Operator {
+    public static void main(String[] args) {
+         long a =1_000_000 * 1_000_000;
+         long b = 1_000_000*1_000_100L;
+
+        System.out.println("a="+a);
+        System.out.println("b="+b);
+
+    }
+}
+
+<예제 3-8>
+public class Operator {
+    public static void main(String[] args) {
+         int a = 1_000_000;
+         int b =2_000_000;
+
+         long c = (long)a*b;
+        System.out.println(c);
+    }
+}
+
+
+
+<예제 3-7>
+public class Operator {
+    public static void main(String[] args) {
+        byte a =10;
+        byte b =30;
+        byte c = (byte)(a*b);
+        System.out.println(c);
+    }
+}
+
+<예제 3-6>
+public class Operator {
+    public static void main(String[] args) {
+        byte a =10;
+        byte b=20;
+        byte c = (byte)(a+b);
+        System.out.println(c);
+    }
+}
+
+<예제3-5>
+public class Operator {
+    public static void main(String[] args) {
+        int a = 10;
+        int b =4;
+        System.out.printf("%d + %d = %d%n", a,b,a+b);
+        System.out.printf("%d - %d = %d%n", a, b, a-b);
+        System.out.printf("%d * %d = %d%n", a, b, a*b);
+        System.out.printf("%d / %d = %d%n", a, b, a/b); // int/int의 결과값은 int로 소수점 절삭
+        System.out.printf("%f / %d = %f%n", (float)a, b, (float)a/b);
+    }
+}
+<예제3-4>
+
+public class Operator {
+    public static void main(String[] args) {
+        int i = -10;
+        i=+i;
+        System.out.println(i);
+
+        i=-10;
+        i=-i;
+        System.out.println(i);
+    }
+}
+
+<예제3-3>
+public class Operator {
+    public static void main(String[] args) {
+         int i=5, j=5;
+        System.out.println(i++);
+        System.out.println(++j);
+        System.out.println("i= "+i+",j= "+j);
+    }
+}
+
+public class Operator {
+    public static void main(String[] args) {
+        int i=5, j=5;
+        System.out.println(i);
+        i++;
+        ++j;
+        System.out.println(j);
+        System.out.println("i= "+i+",j= "+j);
+    }
+}
+
+<예제 3-2>
+
+public class Operator {
+    public static void main(String[] args) {
+         int i=5, j=0;
+
+         j=i++;
+        System.out.println("j=i++; 실행 후, i=" + i + ", j="+j);
+
+        i=5;
+        j=0;
+
+        j=++i;
+        System.out.println("j=++i; 실행 후, i="+ i + ", j= "+j);
+    }
+}
+
+<예제 3-1>
+public class Operator {
+    public static void main(String[] args) {
+         int i=5;
+         i++;
+        System.out.println(i);
+        int j=5;
+        ++j;
+        System.out.println(j);
+    }
+}
