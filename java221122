@@ -1,0 +1,134 @@
+<예제 4-22>
+public class FlowEX22 {
+    public static void main(String[] args) {
+        int[] arr = {10,20,30,40,50};
+        int sum =0;
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.printf("%d ",arr[i]);
+
+        }
+        System.out.println();
+
+        for (int tmp : arr) {
+            System.out.printf("%d ",tmp);
+            sum+=tmp;
+        }
+        System.out.println();
+        System.out.println("sum= "+sum);
+    }
+}
+
+<예제 6-11>
+public class ReferenceParamEX2 {
+    public static void main(String[] args) {
+        int[] x = {10};
+        System.out.println("main() : x= " + x[0]);
+        change(x);
+        System.out.println("After change(x)");
+        System.out.println("main : x =" + x[0]);
+    }
+
+        static void change(int[] x){
+        x[0]=1000;
+            System.out.println("change() : x ="+x[0]);
+
+    }
+
+    }
+
+<예제 6-10>
+class Data{int x;}
+public class ReferenceParamEX {
+    public static void main(String[] args) {
+        Data d = new Data();
+        d.x=10;
+        System.out.println("main() : x = "+d.x);
+
+        change(d);
+        System.out.println("After change(d)");
+        System.out.println("main() : x= "+d.x);
+
+        }
+
+        static void change(Data d) { //참조형 매개변수: 값을 읽고 변경 가능
+            d.x=1000;
+            System.out.println("change(): x= "+d.x);
+    }
+    }
+
+<예제 6-9>
+class Data{int x;}
+public class PrimitiveParamEX {
+    public static void main(String[] args) {
+        Data d = new Data();
+        d.x=10;
+        System.out.println("main():x="+d.x);
+
+        change(d.x);
+        System.out.println("After change(d.x)");
+        System.out.println("main() : x = "+d.x);
+        }
+        static void change (int x){//기본형 매개변수 : 값을 읽기만 함
+        x=1000;
+            System.out.println("change(): x ="+x);
+        }
+}
+
+<예제 6-8>
+public class CallStackTest {
+    public static void main(String[] args) {
+        System.out.println("main(String[] args)이 시작되었음.");
+        firstMethod();
+        System.out.println("main([Stirng");
+    }
+        static void firstMethod(){
+            System.out.println("firstMethod가 시작되었음");
+            secondMethod();
+            System.out.println("firstMethod()이 끝났음");
+
+        }
+
+        static void secondMethod(){
+            System.out.println("secondMethod가 시작되었음");
+            System.out.println("secondMethod이 끝났음.");
+        }
+}
+
+<예제 6-7>
+public class CallStackTest{
+    public static void main(String[] args) {
+    firstMethod();
+    }
+    static void firstMethod(){
+        secondMethod();
+    }
+    static void secondMethod(){
+        System.out.println("secondMethod()");
+    }
+}
+
+<예제6-6>
+public class MyMathTest{
+    public static void main(String[] args) {
+    MyMath mm = new MyMath(); //다른 클래스의 메서드를 사용하려면 인스턴스 생성해야함
+    long result1 = mm.add(5L, 3L);
+    long result2 = mm.subtract(5L, 3L);
+    long result3 = mm.multiply(5L, 3L);
+    double result4 = mm.divide(5L, 3L);
+
+        System.out.println(result1);
+        System.out.println(result2);
+        System.out.println(result3);
+        System.out.println(result4);
+    }
+}
+
+class MyMath{
+    long add(Long a, Long b){return a+b;}
+    long subtract(Long a, Long b){return a-b;}
+    long multiply(Long a, Long b){return a*b;}
+    double divide(double a, double b){return a/b;}
+
+}
+
