@@ -1,0 +1,271 @@
+<예제 6-14>
+class Data{int x;}
+public class ReferenceReturnEx {
+    public static void main(String[] args) {
+        Data d=new Data();
+        d.x=10;
+        Data d2=copy(d);
+        System.out.println(d.x);
+        System.out.println(d2.x);
+    }
+   static Data copy(Data d){
+        Data tmp =new Data();
+        tmp.x=d.x;
+        return tmp;
+    }
+}
+
+<예제 6-13>
+public class ReturnTest {
+    public static void main(String[] args) {
+        ReturnTest r = new ReturnTest();
+        int result=r.add(3,5);
+        System.out.println(result);
+
+        int[] rArr = {0};
+        r.add(3,5,rArr);
+        System.out.println(rArr[0]);
+    }
+    int add(int a, int b){
+        return a+b;
+    }
+    void add(int a, int b, int[] rArr){
+        rArr[0]=a+b;
+    }
+}
+
+<예제6-12>
+public class ReferenceParamEx3 {
+    public static void main(String[] args) {
+        int[] arr = new int[] {3,2,1,6,5,4};
+        printArr(arr);
+        sortArr(arr);
+        printArr(arr);
+        int result=sumArr(arr);
+        System.out.println(result);
+    }
+    static void printArr(int[] arr){
+        System.out.print("[");
+        for (int i : arr) {
+            System.out.print(i+",");
+        }
+        System.out.println("]");
+    }
+    static int sumArr(int[] arr){
+        int sum=0;
+        for (int i : arr) {
+            sum+=i;
+        }
+        //System.out.println("sum=" + sum);
+        return sum;
+    }
+    static void sortArr(int[] arr){
+        for (int i = 0; i < arr.length-1; i++) {
+            for (int j = 0; j < arr.length-1-i; j++) {
+                int tmp=0;
+                if(arr[j]>arr[j+1]){
+                    tmp=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=tmp;
+                }
+
+            }
+
+        }
+    }
+}
+<예제 6-11>
+public class ReferenceParamEx2 {
+    public static void main(String[] args) {
+        int[] x = {10};
+        System.out.println("main() :x =" + x[0]);
+
+        change(x);
+        System.out.println("After Change(x)");
+        System.out.println("main() :x =" + x[0]);
+    }
+    static void change(int[] x){
+        x[0]=1000;
+        System.out.println("change() : x= "+x[0]);
+    }
+}
+
+<예제 6-26>
+class Car {
+    String color;
+    String gearType;
+    int door;
+
+    Car(){
+        this("white","auto",4);
+    }
+    Car(Car c){
+//        color=c.color;
+//        gearType = c.gearType;
+//        door=c.door;
+
+        this(c.color, c.gearType,c.door);
+    }
+    Car(String color, String gearType, int door){
+        this.color = color;
+        this.gearType = gearType;
+        this.door = door;
+    }
+
+}
+public class CarTest3 {
+    public static void main(String[] args) {
+        Car c1 = new Car();
+        Car c2 = new Car(c1); //c1의 복사본 c2 생성
+
+        System.out.println("c1의 color= "+c1.color+", c1의 gearType= "+c1.gearType+",c1의 door= "+c1.door);
+        System.out.println("c2의 color= "+c2.color+", c2의 gearType= "+c2.gearType+",c1의 door= "+c2.door);
+
+        c1.door=100;
+        System.out.println("c1.door=100; 수행후");
+
+        System.out.println("c1의 color= "+c1.color+", c1의 gearType= "+c1.gearType+",c1의 door= "+c1.door);
+        System.out.println("c2의 color= "+c2.color+", c2의 gearType= "+c2.gearType+",c1의 door= "+c2.door);
+
+    }
+}
+
+<예제 6-25>
+class Car{
+    String color;
+    String gearType;
+    int door;
+
+    Car(){
+        this("white","auto",4);
+    }
+    Car(String color){
+        this(color, "auto",4);
+    }
+    Car(String color, String gearType, int door){
+        this.color = color;
+        this.gearType = gearType;
+        this.door = door;
+    }
+}
+public class CarTest2 {
+    public static void main(String[] args) {
+    Car c1 = new Car();
+    Car c2 = new Car("blue");
+
+        System.out.println("c1.color="+c1.color+", gearType="+c1.gearType+", door="+c1.door);
+        System.out.println("c2.color="+c2.color+", gearType="+c2.gearType+", door="+c2.door);
+    }
+}
+
+<예제 6-24>
+class Car{
+    String color;
+    String gearType;
+    int door;
+
+    Car(){}
+    Car(String c, String g, int d){
+        color = c;
+        gearType = g;
+        door = d;
+    }
+}
+public class CarTest {
+    public static void main(String[] args) {
+        Car c1 = new Car();
+        c1.color = "white";
+        c1.gearType = "auto";
+        c1.door = 4;
+
+        Car c2 = new Car("white", "auto", 4);
+
+        System.out.println("c1의 color="+c1.color+", gearType="+c1.gearType+", door="+c1.door);
+        System.out.println("c2의 color="+c2.color+", gearType="+c2.gearType+", door="+c2.door);
+    }
+}
+
+<예제 6-23>
+class Data1{
+    int value;
+}
+class Data2{
+    int value;
+    Data2(int x){ //매개변수가 있는 생성자
+        value=x;
+    }
+    Data2(){}
+}
+public class ConstructorTest {
+    public static void main(String[] args) {
+    Data1 d1 = new Data1();
+    Data2 d2 = new Data2(5);
+    }
+}
+
+<예제 6-22>
+public class VarArgsEx {
+    public static void main(String[] args) {
+        String[] strArr = {"100", "200", "300"};
+        System.out.println(concatenate("","100","200","300"));
+        System.out.println(concatenate(",",strArr));
+        System.out.println(concatenate(",",new String[]{"1","2","3"}));
+        System.out.println("["+concatenate(",")+"]");
+    }
+    static String concatenate(String delim, String... args){
+        String result="";
+
+        for (String str : args) {
+            result+=delim+args;
+        }
+        return result;
+    }
+
+   /* static String concatenate(String... args){
+        return concatenate("", args);
+    }
+    */
+}
+
+<예제6-21>
+public class OverloadingTest {
+    public static void main(String[] args) {
+        MyMath3  mm =new MyMath3();
+        System.out.println("mm.add(3,3) 결과:"+mm.add(3,3));
+        System.out.println("mm.add(3,3L) 결과:"+mm.add(3,3L));
+        System.out.println("mm.add(3L,3) 결과"+mm.add(3L,3));
+        System.out.println("mm.add(3L, 3L) 결과"+mm.add(3L, 3L));
+
+        int[] a ={100, 200, 300};
+        System.out.println("mm.add(a) 결과: "+ mm.add(a));
+    }
+}
+class MyMath3{
+    int add(int a, int b){
+        System.out.print("int add(int a, int b) - ");
+        return a+b;
+    }
+
+    long add(int a, long b){
+        System.out.print("int add(int a, long b) - ");
+        return a+b;
+    }
+
+    long add(long a, int b){
+        System.out.print("long add(long a, int b) - ");
+        return a+b;
+    }
+    long add(long a, long b){
+        System.out.print("long add(long a, long b - ");
+        return a+b;
+    }
+    long add(int[] a){ //모든 요소의 합
+        System.out.print("(long add(int[] a) - ");
+        int sum = 0;
+        for (int i : a) {
+            sum+=i;
+        }
+        return sum;
+    }
+}
+
