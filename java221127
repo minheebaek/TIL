@@ -1,0 +1,140 @@
+<예제 7-1>
+class Tv{
+    boolean power;
+    int channel;
+
+    void power(){power= !power;}
+    void channelUp(){++channel;}
+    void channelDown(){--channel;}
+}
+class CaptionTv extends Tv{
+    boolean caption;
+
+    void displayCapion(String text){
+        if(caption){
+            System.out.println(text);
+        }
+    }
+}
+public class CaptionTvTest {
+    public static void main(String[] args) {
+    CaptionTv ctv = new CaptionTv();
+    ctv.channel =10;
+    ctv.channelUp();
+        System.out.println(ctv.channel);
+        ctv.displayCapion("hello, world");
+        ctv.caption=true;
+        ctv.displayCapion("hello, world");
+    }
+}
+
+<예제6-30>
+class Document{
+    static int count;
+    String name;
+
+    Document(){
+        this("제목없음"+ ++count);
+    }
+    Document(String name){
+        this.name = name;
+        System.out.println("문서 "+this.name+"가 생성되었습니다.");
+    }
+}
+public class DocumentTest {
+    public static void main(String[] args) {
+    Document d1 = new Document();
+        Document d2 = new Document();
+        Document d3 = new Document();
+        Document d4 = new Document("자바");
+    }
+}
+<예제 6-29_2>
+
+class Product{
+    static int count = 0; //생성된 인스턴스의 수를 저장하기위한 변수
+    int serialNo; //인스턴스고유의번호
+
+    public Product(){
+        this( ++count);
+    }
+    Product(int count){
+
+        this.serialNo=count;
+    }
+}
+public class ProductTest {
+    public static void main(String[] args) {
+        Product p1 = new Product();
+        Product p2 = new Product();
+        Product p3 = new Product();
+
+        System.out.println("p1의 제품번호(serial no)는 "+p1.serialNo);
+        System.out.println("p2의 제품번호(serial no)는 "+p2.serialNo);
+        System.out.println("p3의 제품번호(serial no)는 "+p3.serialNo);
+        System.out.println("생산된 제품의 수는 모두 "+Product.count+"개 입니다.");
+
+    }
+}
+
+<예제 6-29_1>
+class Product{
+    static int count = 0; //생성된 인스턴스의 수를 저장하기위한 변수
+    int serialNo; //인스턴스고유의번호
+    {
+        ++count;
+        serialNo = count;
+    }
+    public Product(){}
+}
+public class ProductTest {
+    public static void main(String[] args) {
+        Product p1 = new Product();
+        Product p2 = new Product();
+        Product p3 = new Product();
+
+        System.out.println("p1의 제품번호(serial no)는 "+p1.serialNo);
+        System.out.println("p2의 제품번호(serial no)는 "+p2.serialNo);
+        System.out.println("p3의 제품번호(serial no)는 "+p3.serialNo);
+        System.out.println("생산된 제품의 수는 모두 "+Product.count+"개 입니다.");
+    }
+}
+
+<예제 6-28>
+public class StaticBlockTest {
+    static int[] arr = new int[10];
+
+    static{
+        for (int i = 0; i < arr.length; i++) {
+            arr[i]=(int)(Math.random()*10)+1;
+        }
+    }
+    public static void main(String[] args) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.printf("arr[%d}:%d%n",i,arr[i]);
+
+        }
+
+    }
+}
+
+<예제 6-27>
+public class BlockTest {
+    static{
+        System.out.println("static {}"); //클래스 초기화블럭
+    }
+    {
+        System.out.println("{ }"); //인스턴스 초기화블럭
+    }
+    BlockTest(){
+        System.out.println("생성자");
+    }
+    public static void main(String[] args) {
+        System.out.println("BlockTest bt = new BlockTest()");
+        BlockTest bt = new BlockTest();
+
+        System.out.println("BlockTest bt2 = new BlockTest()");
+        BlockTest bt2 = new BlockTest();
+    }
+}
+
