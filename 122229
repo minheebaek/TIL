@@ -1,0 +1,95 @@
+//백준 2439번
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+     Scanner scan = new Scanner(System.in);
+     int num = scan.nextInt();
+
+        for (int i = 0; i < num; i++) {
+            for (int j = num-1; j>i; j--) {
+                System.out.print(" ");
+                }
+            for (int k = 0; k <= i; k++) {
+                System.out.print("*");
+
+            }
+            System.out.println();
+            }
+
+    }
+}
+//7-12
+class Card{
+    final int NUMBER;
+    final String KIND;
+    static int width = 100;
+    static int height = 250;
+
+    Card(String kind, int number){
+        KIND=kind;
+        NUMBER=number;
+    }
+    Card(){
+        this("HEART", 1);
+    }
+    public String toString(){
+        return KIND + " "+NUMBER;
+    }
+}
+public class FinalCardTest {
+    public static void main(String[] args) {
+    Card c = new Card("HEART",10);
+    System.out.println(c.KIND);
+    System.out.println(c.NUMBER);
+    System.out.println(c); //sout(c.toString())
+    }
+
+}
+//7-14
+public class TimeTest {
+    public static void main(String[] args) {
+    Time t = new Time(12,20,19);
+    System.out.println(t);
+    System.out.println();
+    t.setHour(t.getHour()+1);
+    System.out.println(t);
+    }
+}
+class Time{
+    private int hour, minute, second;
+    Time(int hour, int minute, int second){
+        setHour(hour);
+        setMinute(minute);
+        setSecond(second);
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public void setHour(int hour) {
+        if(hour<0||hour>23) return;
+        this.hour = hour;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public void setMinute(int minute) {
+        if(minute<0||minute>59)return;
+        this.minute = minute;
+    }
+
+    public int getSecond(){
+        return second;
+    }
+    public void setSecond(int second) {
+        if(second<0||second>59)return;
+        this.second = second;
+    }
+    public String toString(){
+        return hour+":"+minute+":"+second;
+    }
+}
