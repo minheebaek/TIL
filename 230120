@@ -1,0 +1,38 @@
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException, IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int max = 0;
+        int count = 0;
+        int arr[] = new int[9];
+        for (int i = 0; i < 9; i++) {
+            int num = Integer.parseInt(br.readLine());
+
+            if (num > max) {
+                max = num;
+
+            }
+            arr[i]=num;
+        }
+        count=max;
+        for (int i = 0; i < arr.length; i++) {
+           if(count==arr[i]){
+               count=i+1;
+               break;
+           }
+
+        }
+
+
+
+        bw.write(max+"\n");
+        bw.write(count+"\n");
+
+        br.close();
+        bw.flush();
+        bw.close();
+    }
+
+}
