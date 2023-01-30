@@ -1,0 +1,36 @@
+import java.io.*;
+import java.util.StringTokenizer;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int num = Integer.parseInt(br.readLine());
+        double score[] = new double[num];
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < num; i++) {
+            score[i] = Integer.parseInt(st.nextToken());
+        }
+        double max = 0;
+        for (int i = 0; i < score.length; i++) {
+            if(score[i]>max){
+                max=score[i];
+            }
+        }
+
+        for (int i = 0; i < score.length; i++) {
+            score[i]=(score[i]/max)*100;
+        }
+        double sum =0;
+        for (int i = 0; i < score.length; i++) {
+            sum+=score[i];
+        }
+        bw.write(sum/num+"");
+
+        br.close();
+        bw.flush();
+        bw.close();
+
+    }
+}
