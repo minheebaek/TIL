@@ -1,0 +1,51 @@
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+            String str1 = br.readLine();
+            String str2 = br.readLine();
+            String str3 = br.readLine();
+            String str4 = br.readLine();
+            String str5 = br.readLine();
+
+            int strarr1[] = new int[str1.length()];
+            int strarr2[] = new int[str2.length()];
+            int strarr3[] = new int[str3.length()];
+            int strarr4[] = new int[str4.length()];
+            int strarr5[] = new int[str5.length()];
+
+            int length[] = {str1.length(),str2.length(),str3.length(),str4.length(),str5.length()};
+            int max = 0;
+            for (int i = 0; i <length.length; i++) {
+                if(length[i]>max){
+                    max=length[i];
+                }
+            }
+
+
+        for (int i = 0; i < max; i++) {
+            if(i<str1.length()) {
+                bw.write(str1.charAt(i) + "");
+            }
+            if(i<str2.length()) {
+                bw.write(str2.charAt(i) + "");
+            }
+            if(i<str3.length()) {
+                bw.write(str3.charAt(i) + "");
+            }
+            if(i<str4.length()) {
+                bw.write(str4.charAt(i) + "");
+            }
+            if(i<str5.length()) {
+                bw.write(str5.charAt(i) + "");
+            }
+
+        }
+        br.close();
+        bw.flush();
+        bw.close();
+        }
+
+    }
