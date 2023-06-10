@@ -1,0 +1,53 @@
+import java.util.*;
+import java.io.*;
+
+public class Main{
+    static int[] dirX ={0, 0, -1 ,1, -1, 1, -1, 1};
+    static int dirY[] ={-1, 1, 0, 0, 1, 1, -1, -1};
+    static boolean[][] visited;
+    static int[][] test;
+    static int w,h,nextX,nextY;
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String str = " ";
+        while(!(str=br.readLine()).equals("0 0")){
+            StringTokenizer st = new StringTokenizer(str);
+             w = Integer.parseInt(st.nextToken());
+             h = Integer.parseInt(st.nextToken());
+            test = new int[h][w];
+
+            for(int i=0; i<h; i++){
+                st=new StringTokenizer(br.readLine());
+                for(int j=0; j<w; j++){
+                    test[i][j] = Integer.parseInt(st.nextToken());
+                }
+            }
+
+
+            visited = new boolean[h][w];
+            int cycle=0;
+
+            for(int i=0; i<h; i++ ){
+                for(int j=0; j<w; j++ ){
+                    if(test[i][j]==1 && !visited[i][j]){
+                        dfs(i,j);
+                        cycle++;
+                    }
+                }
+            }
+            System.out.println(cycle);
+        }
+    }
+    static void dfs(int x , int y){
+        visited[x][y]=true;
+        for(int i=0; i<8; i++){
+           nextX = dirX[i]+x;
+           nextY = dirY[i]+y;
+            if(nextX >= 0 && nextY >= 0 && nextX < h && nextY < w) {
+                if (test[nextX][nextY] == 1 && !visited[nextX][nextY]) {
+                    dfs(nextX, nextY);
+                }
+            }
+        }
+    }
+}
