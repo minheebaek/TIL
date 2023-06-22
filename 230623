@@ -1,0 +1,42 @@
+문제
+다음 SQL 실행 결과를 숫자만 쓰시오.
+
+| EMPNO | SAL |
+| --- | --- |
+| 100 | 1000 |
+| 200 | 3000 |
+| 300 | 1500 |
+
+SELECT COUNT(*) FROM [TABLE] WHERE EMPNO > 100 AND SAL >= 3000 OR ENPNO = 200
+
+사용한 개념&풀이 방법
+count(*) ⇒ all, 조건에 해당하는 행의 수를 적으면 된다. 개수를 구하라
+EMPNO > 100 AND SAL >= 3000 해당하는거 
+ENPNO = 200
+도합 1
+
+답
+1
+
+문제
+public class ssoTest{
+     public static void main(String []args){
+        int a[][] = {{45, 50, 75}, {89}};
+        System.out.println(a[0].length);
+        System.out.println(a[1].length);
+        System.out.println(a[0][0]);
+        System.out.println(a[0][1]);
+        System.out.println(a[1][0]);
+     }
+}
+
+사용한 개념&풀이 방법
+println이니까 줄 바꿈
+인덱스 주의해서 출력하면 된다
+
+답
+3
+1
+45
+50
+89
