@@ -1,0 +1,58 @@
+문제
+python
+class arr:
+    a = ["Seoul","Kyeonggi","Inchon","Daejoen","Deagu","Pusan"]
+str01=''
+for i in arr.a:
+    str01 = str01 + i[0]
+print(str01)
+
+
+답
+SKIDDP
+
+사용한 개념&풀이 방법
+
+for i in arr.a:
+a 리스트의 요소들을 하나씩 꺼내 i에 대입한다.
+그 i의 0번째를 출력한다.
+
+문제
+class Parent {
+    int compute(int num) {
+        if (num <= 1)
+            return num;
+        return compute(num - 1) + compute(num - 2);
+    } 
+}
+ 
+class Child extends Parent {
+    @Override
+    int compute(int num) {
+        if (num <= 1)
+            return num;
+        return compute(num - 1) + compute(num -3);
+    }
+}
+ 
+public class Exam {
+    public static void main(String[] args) {
+        Parent obj = new Child();
+        System.out.print(obj.compute(4));
+    }
+}
+
+사용한 개념&풀이 방법
+Parent obj = new Child(); 니까 
+부모거만 사용 가능하다. 그런데 자식에서 오버라이딩 했으니까 자식거를 사용해야한다.
+재귀함수가 하나일땐 박스를 그려서 위에서부터 pop 하면 되고 재귀함수가 두개일때는 피라미드를 그려서 해결하면 된다.
+compute(3)+compute(1)
+compute(3)
+compute(2)+compute(0)
+compute(2)
+compute(1)+compute(-1)
+⇒1-1+0+1
+
+답
+1
+
