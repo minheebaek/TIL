@@ -1,3 +1,5 @@
+package 알고리즘;
+
 import java.io.*;
 import java.util.Arrays;
 
