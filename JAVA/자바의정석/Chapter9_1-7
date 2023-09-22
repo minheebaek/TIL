@@ -1,0 +1,167 @@
+package JAVA.자바의정석;
+
+public class Chapter9_1 {
+
+}
+//예제 9-1
+class EqualsEx1{
+    public static void main(String[] args) {
+        Value v1 = new Value(10);
+        Value v2 = new Value(10);
+
+        if (v1.equals(v2))
+            System.out.println("v1과 v2는 같습니다");
+        else
+            System.out.println("v1과 v2는 다릅니다.");
+
+        v2 = v1;
+        if(v1.equals(v2))
+            System.out.println("v1과 v2는 같습니다.");
+        else
+            System.out.println("v1과 v2는 다릅니다.");
+    }
+}
+
+class Value{
+   int value;
+   Value(int value){
+       this.value = value;
+   }
+}
+
+class Person{
+    long id;
+
+    public boolean equals(Object obj){
+        if(obj instanceof Person)
+            return id == ((Person)obj).id;
+        else
+            return false;
+    }
+    
+    Person(long id){
+        this.id = id;
+    }
+}
+//9-2
+class EqualsEx2{
+    public static void main(String[] args) {
+        Person p1 = new Person(8011123123L);
+        Person p2 = new Person(8011123123L);
+        
+        if(p1==p2)
+            System.out.println("p1과 p2는 같은 사람입니다.");
+        else
+            System.out.println("p1과 p2는 다른 사람입니다.");
+        if(p1.equals(p2))
+            System.out.println("p1과 p2는 같은 사람입니다.");
+        else
+            System.out.println("p1과 p2는 다른 사람입니다.");
+    }
+}
+
+//9-3
+class HashCodeEx1{
+    public static void main(String[] args) {
+        String str1 = new String("abc");
+        String str2 = new String("abc");
+
+        System.out.println(str1.equals(str2));
+        System.out.println(str1.hashCode());
+        System.out.println(str2.hashCode());
+        System.out.println(System.identityHashCode(str1));
+        System.out.println(System.identityHashCode(str2));
+    }
+}
+
+//9-4
+class Card{
+    String kind;
+    int number;
+    Card(){
+        this("SPADE",1);
+    }
+    Card(String kind, int number){
+        this.kind=kind;
+        this.number=number;
+    }
+}
+
+class CardToString{
+    public static void main(String[] args) {
+        Card c1 = new Card();
+        Card c2 = new Card();
+
+        System.out.println(c1.toString());
+        System.out.println(c2.toString());
+    }
+}
+
+//9-5
+class ToStringTest{
+    public static void main(String[] args) {
+        String str = new String("KOREA");
+        java.util.Date today = new java.util.Date();
+
+        System.out.println(str);
+        System.out.println(str.toString());
+        System.out.println(today);
+        System.out.println(today.toString());
+    }
+}
+
+//9-6
+class Card{
+    String kind;
+    int number;
+    
+    Card(){
+        this("SPADE",1);
+    }
+    Card(String kind, int number){
+        this.kind=kind;
+        this.number=number;
+    }
+    public String toString(){
+        return "kind:"+kind+",number:"+number;
+    }
+    
+}
+class CardToString2{
+    public static void main(String[] args) {
+        Card c1 = new Card();
+        Card c2 = new Card("HEART",10);
+
+        System.out.println(c1.toString());
+        System.out.println(c2.toString());
+    }
+}
+
+//9-7
+class Point implements Cloneable{
+    int x, y;
+    
+    Point(int x, int y){
+        this.x=x;
+        this.y=y;
+    }
+    public String  toString(){
+        return "x="+x+", y="+y;
+    }
+    
+    public Object clone(){
+        Object obj = null;
+        try{
+            obj = super.clone(); //clone()은 반드시 예외처리
+        }catch (CloneNotSupportedException e){}
+        return obj;
+    }
+}
+class CloneEx1{
+    public static void main(String[] args) {
+        Point original = new Point(3,5);
+        Point copy = (Point) original.clone();
+        System.out.println(original);
+        System.out.println(copy);
+    }
+}

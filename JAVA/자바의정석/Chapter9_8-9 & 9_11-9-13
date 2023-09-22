@@ -1,0 +1,127 @@
+package JAVA.자바의정석;
+
+import java.awt.*;
+import java.util.Arrays;
+
+public class Chapter9_8 {
+}
+//예제 9-8
+class CloneEx2{
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,4,5};
+        int[] arrClone=arr.clone(); //배열 arr을 복제해서 같은 내용의 새로운 배열을 만든다.
+        arrClone[0]=6;
+
+        System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(arrClone));
+    }
+}
+
+//예제 9-9
+class Circle implements Cloneable{
+    Point p;
+    double r;
+
+    Circle(Point p, double r){
+        this.p=p;
+        this.r=r;
+    }
+    public Circle shallowCopy(){
+        Object obj = null;
+        try{
+            obj = super.clone();
+        }catch (CloneNotSupportedException e){}
+        return (Circle)obj;
+    }
+    public Circle deepCopy() {
+        Object obj = null;
+        try {
+            obj = super.clone();
+        } catch (CloneNotSupportedException e) {
+        }
+
+        Circle c = (Circle) obj;
+        c.p = new Point(this.p.x, this.p.y);
+        return c;
+    }
+    public String toString(){
+        return "[p="+p+", r="+r+"]";
+    }
+}
+class Point{
+    int x,y;
+    Point(int x, int y){
+        this.x=x;
+        this.y=y;
+    }
+
+    public String toString(){
+        return "("+x+", y"+y+")";
+    }
+}
+
+class ShallowDeepCopy{
+    public static void main(String[] args) {
+        Circle c1 = new Circle(new Point(1,1),2.0);
+        Circle c2 = c1.shallowCopy();
+        Circle c3 = c1.deepCopy();
+
+        System.out.println("c1="+c1);
+        System.out.println("c2="+c2);
+        System.out.println("c3="+c3);
+
+        c1.p.x=9;
+        c1.p.y=9;
+        System.out.println("=c1의 변경후 =");
+        System.out.println("c1="+c1);
+        System.out.println("c2="+c2);
+        System.out.println("c3="+c3);
+    }
+}
+
+//예제 9-11
+class StringEx1{
+    public static void main(String[] args) {
+        String str1="abc";
+        String str2="abc";
+        System.out.println("String str1 = \"abc\";");
+        System.out.println("String str2 = \"abc\";");
+
+        System.out.println("str1==str2 ?"+(str1 == str2));
+        System.out.println("str1.equals(str2)?"+str1.equals(str2));
+        System.out.println();
+
+        String str3=new String("\"abc\"");
+        String str4=new String("\"abc\"");
+
+        System.out.println("String str3 =new String(\"abc\");");
+        System.out.println("String str4 = new String(\"abc\");");
+
+        System.out.println("str3 == str4 ? "+(str3==str4));
+        System.out.println("str3.equals(str4) ? "+str3.equals(str4));
+
+
+    }
+}
+
+//예제 9-12
+class StringEx2{
+    public static void main(String[] args) {
+        String s1 ="AAA";
+        String s2 = "AAA";
+        String s3 = "AAA";
+        String s4 = "BBB";
+    }
+    
+}
+
+//예제 9-13
+class StringEx3{
+    public static void main(String[] args) {
+        char[] cArr = new char[0];
+        String s = new String(cArr);
+
+        System.out.println(cArr.length);
+        System.out.println("@@@"+s+"@@@");
+    }
+}
