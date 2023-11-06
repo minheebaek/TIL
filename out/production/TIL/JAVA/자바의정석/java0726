@@ -1,0 +1,129 @@
+public class 연습6_21 { // 조상클래스
+	static int abs(int value) { // 다 lv니까 static
+		if (value >= 0) {
+			return value;
+		} else {
+			return -value;
+		}
+	}
+
+	public static void main(String[] args) {
+		int value = 5; // lv
+		System.out.println(value + "의 절대값:" + abs(value));
+		value = -10;
+		System.out.println(value + "의 절대값:" + abs(value));
+	}
+
+}
+public class 연습6_21 { // 조상클래스
+	static int abs(int value) { // 다 lv니까 static
+		return value >= 0 ? value : -value;
+	}
+
+	public static void main(String[] args) {
+		int value = 5; // lv
+		System.out.println(value + "의 절대값:" + abs(value));
+		value = -10;
+		System.out.println(value + "의 절대값:" + abs(value));
+	}
+
+}
+
+public class 연습6_20 { 
+	
+	public static int max(int[] arr) {
+		if (arr==null||arr.length == 0) {
+			return -999999;
+		}
+		int max = arr[0];
+		for (int i = 1; i < arr.length; i++) {
+			if (arr[i] > max) {
+				max = arr[i];
+
+			}
+			return max;
+		}
+
+	public static void main(String[] args) {
+		int[] data = { 3, 2, 9, 4, 7 };
+		System.out.println(java.util.Arrays.toString(data));
+		System.out.println("최대값:" + max(data));
+		System.out.println("최대값:" + max(null));
+		System.out.println("최대값:" + max(new int[] {}));
+	}
+
+}
+
+	}
+
+}
+
+class MyPoint3 extends Object {
+	int x;
+	int y;
+
+	// Object클래스의 toString()을 오버라이딩
+	@Override
+	public String toString() {
+		return "x:" + x + ",y:" + y;
+	}
+
+	MyPoint3(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+}
+
+public class OverrideTest {
+
+	public static void main(String[] args) {
+		MyPoint3 p = new MyPoint3(3, 5);
+//		p.x = 3; //더 간단하게 생성자 이용
+//		p.y = 5;
+
+		System.out.println(p.toString());// toString을 호출해서 간편하게 출력
+		System.out.println(p); // p.toString보다 더 간단한 방법
+		// System.out.println(p.x);
+//		System.out.println(p.y);
+	}
+}
+class Tv {
+	boolean Power;
+	int channel;
+
+	void Power() {
+		Power = !Power;
+	}
+
+	void channelUp() {
+		++channel;
+	}
+
+	void channelDown() {
+		--channel;
+	}
+
+}
+
+class SmartTv extends Tv {
+	boolean caption; // 자막기능 on/off
+
+	void displayCaption(String text) {
+		if (caption) {
+			System.out.println(text);
+		}
+	}
+}
+
+class Ex7_1 {
+	public static void main(String[] args) {
+		SmartTv s = new SmartTv();
+		s.channel = 10;
+		s.channelUp();
+		System.out.println(s.channel);
+		s.displayCaption("hello world");
+		s.caption = true;
+		s.displayCaption("hello world"); // 객체의 메서드, 변수 호출시 리모콘 잊지말자
+	}
+}
+

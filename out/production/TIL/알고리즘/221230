@@ -1,0 +1,110 @@
+//백준 11720
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+    Scanner scan = new Scanner(System.in);
+    int num = scan.nextInt();
+    int[] arr = new int[num];
+    String str = scan.next();
+        int sum=0;
+        for (int i = 0; i < arr.length; i++) {
+            arr[i]=str.charAt(i);
+            arr[i]=arr[i]-'0';
+
+            sum+=arr[i];
+        }
+        System.out.println(sum);
+    }
+}
+
+//7-15
+public class CastingTest1 {
+    public static void main(String[] args) {
+        Car car = null;
+        FireEngine fe = new FireEngine();
+        FireEngine fe2 = null;
+
+        fe.water();
+        car=fe; //조상<-자손 업캐스팅
+        //car.water();// 불가
+        car.stop();
+        fe2=(FireEngine) car; //조상->자손 //다운캐스팅 형변환 필수
+        fe2.water();
+    }
+}
+
+class Car{
+    String color;
+    int door;
+
+    void drive(){
+        System.out.println("drive, brrrr~");
+    }
+
+    void stop(){
+        System.out.println("STOP!");
+    }
+
+}
+
+class FireEngine extends Car{
+
+    void water(){
+        System.out.println("water!");
+    }
+}
+//7-16
+public class CastingTest1 {
+    public static void main(String[] args) {
+       Car car = new Car();
+       Car car2 = null;
+       FireEngine fe = null;
+
+       car.drive();
+       fe = (FireEngine)car;//에러 발생
+       fe.drive();
+       car2=fe;
+       car2.drive();
+    }
+}
+
+class Car{
+    String color;
+    int door;
+
+    void drive(){
+        System.out.println("drive, brrrr~");
+    }
+
+    void stop(){
+        System.out.println("STOP!");
+    }
+
+}
+
+class FireEngine extends Car{
+
+    void water(){
+        System.out.println("water!");
+    }
+}
+
+//7-16
+public class InstanceofTest {
+    public static void main(String[] args) {
+        FireEngine fe = new FireEngine();
+        if(fe instanceof FireEngine){
+            System.out.println("this is a FireEngine instance.");
+        }
+        if(fe instanceof Car){
+            System.out.println("this is a Car instance");
+        }
+        if(fe instanceof Object){
+            System.out.println("this is a Object instance.");
+        }
+        System.out.println(fe.getClass().getName()); //클래스 이름 출력
+    }
+}
+class Car{}
+class FireEngine extends Car{}

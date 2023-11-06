@@ -1,0 +1,134 @@
+package JAVA.자바의정석;
+
+//8-21
+class NewExceptionTest {
+    public static void main(String[] args) {
+        try{
+            startInstall();
+            copyFiles();
+        }catch (SpaceException e){
+            System.out.println("에러메세지:"+e.getMessage());
+            e.printStackTrace();
+            System.out.println("공간을 확보한 후에 다시 설치하시길 바랍니다");
+        }catch (MemoryException me){
+            System.out.println("에러메세지:"+me.getMessage());
+            me.printStackTrace();
+            System.gc();
+            System.out.println("다시 설치를 시도하세요");
+        }finally {
+            deleteTempFiles();
+        }
+    }
+    static void startInstall() throws SpaceException, MemoryException{
+        if(!enoughSpace()){
+            throw new SpaceException("설치할 공간이 부족합니다.");
+        }
+        if(!enoughMemory()){
+            throw new MemoryException("메모리가 부족합니다.");
+        }
+    }
+    static void copyFiles(){}
+    static void deleteTempFiles(){}
+    static boolean enoughSpace(){
+        
+        return false;
+    }
+    static boolean enoughMemory(){
+
+        return true;
+    }
+    
+    class SpaceException extends Exception{
+        SpaceException(String msg){
+            super(msg);
+        }
+    }
+    class MemoryException extends Exception{
+        MemoryException(String msg){
+            super(msg);
+        }
+    }
+}
+
+//8-22
+
+class ExceptionEx17{
+    public static void main(String[] args) {
+        try{
+            method1();
+        }catch (Exception e){
+            System.out.println("main메서드에서 예외가 처리되었습니다.");
+        }
+    }
+    
+    static void method1() throws Exception{
+        try {
+            throw new Exception();
+        }catch (Exception e){
+            System.out.println("method1메서드에서 예외가 처리되었습니다.");
+            throw e;
+        }
+    }
+}
+
+//8-23
+class ChainedExceptionEx {
+    public static void main(String[] args) {
+        try{
+            install();
+        }catch (InstallException e){
+            e.printStackTrace();
+        }catch (Exception e){
+            e.printStackTrace();
+            
+        }
+    }
+    
+    static void install() throws InstallException(){
+        try{
+            startInstall();
+            copyFiles();
+        }catch (SpaceException me){
+            InstallException ie = new InstallException("설치중 예외 발생");
+            ie.initCause(me);
+            throw ie;
+        }finally {
+            deleteTempFiles();
+        }
+    }
+    
+    static void startInstall() throws SpaceException, MemoryException{
+        if(!enoughSpace()){
+            throw new SpaceException("설치할 공간이 부족합니다.");
+        }
+        if(!enoughMemory()){
+            throw new MemoryException("메모리가 부족합니다.");
+         //   throw new RuntimeException(new MemoryException("메모리가 부족합니다."))
+        }
+    }
+    
+    static void copyFiles(){}
+    static void deleteTempFiles(){}
+    
+    static boolean enoughSpace(){
+        return false;
+    }
+    static boolean enoughMemory(){
+        return true;
+    }
+    class InstallException extends Exception{
+        InstallException(String msg){
+            super(msg);
+        }
+    }
+    class SpaceException extends Exception{
+        SpaceException(String msg){
+            super(msg);
+        }
+    }
+    class MemoryException extends Exception{
+        MemoryException(String msg){
+            super(msg);
+        }
+    }
+}

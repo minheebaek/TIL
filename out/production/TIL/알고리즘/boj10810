@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.StringTokenizer;
+public class Main{
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
+
+        int[] basket = new int[n];
+
+        for(int p=0; p<m; p++) {
+            st = new StringTokenizer(br.readLine());
+            int i = Integer.parseInt(st.nextToken()) - 1;
+            int j = Integer.parseInt(st.nextToken()) - 1;
+            int k = Integer.parseInt(st.nextToken());
+
+            while (i <= j) {
+                basket[i++]=k;
+            }
+        }
+
+        for(int i=0; i<basket.length; i++){
+            bw.write(basket[i]+" ");
+        }
+
+        br.close();
+        bw.flush();
+        bw.close();
+
+    }
+}

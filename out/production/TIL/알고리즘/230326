@@ -1,0 +1,103 @@
+boj 27866
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String str = br.readLine();
+        int num = Integer.parseInt(br.readLine());
+
+        bw.write(str.charAt(num-1)+"");
+
+        br.close();
+        bw.flush();
+        bw.close();
+            }
+        }
+
+import java.io.*;
+
+boj 27866
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        
+        bw.write(br.readLine().charAt(Integer.parseInt(br.readLine())-1));
+        br.close();
+        bw.flush();
+        bw.close();
+            }
+        }
+
+boj 1924
+import java.io.*;
+import java.util.StringTokenizer;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int month = Integer.parseInt(st.nextToken());
+        int date = Integer.parseInt(st.nextToken());
+        int day;
+        int sum=0;
+        if(month==1){
+            sum=date;
+        }else {
+            for (int i = 1; i <= month - 1; i++) {
+                switch (i) {
+                    case 4:
+                    case 6:
+                    case 9:
+                    case 11:
+                        day = 30;
+                        sum+=day;
+                        break;
+
+                    case 2:
+                        day = 28;
+                        sum+=day;
+                        break;
+
+                    default:
+                        day = 31;
+                        sum+=day;
+                }
+
+            }
+            sum+=date;
+
+        }
+        switch (sum%7){
+            case 1:
+                bw.write("MON");
+                break;
+            case 2:
+                bw.write("TUE");
+                break;
+            case 3:
+                bw.write("WED");
+                break;
+            case 4:
+                bw.write("THU");
+                break;
+            case 5:
+                bw.write("FRI");
+                break;
+            case 6:
+                bw.write("SAT");
+                break;
+            case 0:
+                bw.write("SUN");
+                break;
+        }
+
+
+        br.close();
+        bw.flush();
+        bw.close();
+            }
+        }

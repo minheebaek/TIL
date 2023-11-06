@@ -1,0 +1,95 @@
+
+<Boj 10809>
+//,틀림
+import java.util.Scanner;
+public class Boj {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String str = scan.next();
+        int[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+        //아스키코드로 넣고 싶어서 char형을 int로 받음
+        
+        for (int i = 0; i < str.length(); i++) {
+            for (int j = 0; j < alphabet.length; j++) {
+                if ((int)str.charAt(i) == alphabet[j]) {
+                    alphabet[j] = i;
+                    break;
+                }
+            }
+        }
+        
+        for (int i = 0; i < alphabet.length; i++) {
+            if (97 <= alphabet[i] && alphabet[i] <= 122) { //아직도 알파벳 소문자 아스키코드로 넣어져있으면 -1로 바꿔넣음
+                alphabet[i] =-1;
+            }
+            System.out.print(alphabet[i] + " ");
+        }
+        System.out.println();
+    }
+<예제 6-20>
+public class MemberCall {
+    int iv = 10;
+    static int cv =20;
+    
+    int iv2 =cv; //iv는 cv 사용가능
+    //static int cv2 = iv;  //에러 클래스변수는 인스턴스 변수를 사용xxxx
+    static int cv2=new MemberCall().iv; //객체 생성 후에 사용 가능
+    
+    static void staticMethod1(){
+        System.out.println(cv);
+       //System.out.println(iv);
+        MemberCall c = new MemberCall();
+        System.out.println(c.iv); //객체생성 후 인스턴스 변수 사용 가능
+    }
+    void instanceMethod1(){ //인스턴스메서드는 cv, iv 바로 사용 가능
+        System.out.println(cv);
+        System.out.println(iv);
+    }
+    
+    static void staticMethod2(){
+        staticMethod1();
+        //instanceMethod();
+        MemberCall c = new MemberCall();
+        c.instanceMethod1();//인스턴스 생성 후 호출 가능
+    }
+    void instanceMethod2(){ //인스턴스 생성없이 메서드 바로 호출 가능
+        staticMethod1();
+        instanceMethod1(); 
+    }
+}
+
+
+<예제 6-19>
+class MyMath2{
+    //메서드 셍성부분
+    long a, b;
+
+    //iv 활용하니까 매개변수 필요 xx
+    long add(){return a+b;}
+    long subtract() {return a - b;}
+    long multiply() {return a*b;}
+    long divide() {return a/b;}
+
+    //static 메서드니까 매개변수 필요
+    static long add(long a,long b){ return a+b;}
+    static long subtract(long a, long b){return a-b;}
+    static long multiply(long a, long b){return a*b;}
+    static double divide(double a, double b){return a/b;}
+}
+public class MyMathTest2 {
+    public static void main(String[] args) { //호출부분
+        //클래스 메서드
+        System.out.println(MyMath2.add(100L,200L));
+        System.out.println(MyMath2.subtract(100L,200L));
+        System.out.println(MyMath2.multiply(100L,200L));
+        System.out.println(MyMath2.divide(200.0,100.0));
+
+        //인스턴스메서드
+        MyMath2 mm = new MyMath2();
+        mm.a=200L;
+        mm.b=100L;
+
+        System.out.println(mm.add());
+        System.out.println(mm.subtract());
+        System.out.println(mm.multiply());
+        System.out.println(mm.divide());

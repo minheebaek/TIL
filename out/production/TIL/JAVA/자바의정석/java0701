@@ -1,0 +1,54 @@
+public static void main(String[] args) {
+		//예제 4-2
+		int x = 0;
+		System.out.printf("x=%d 일 때, 참인 것은%n", x);
+		if (x == 0) //t
+			System.out.println("x==0");
+		if (x != 0)
+			System.out.println("x!=0");
+		if (!(x == 0))
+			System.out.println("!(x==0)");
+		if (!(x != 0)) //t
+			System.out.println("!(x!=0)");
+
+		x = 1;
+		System.out.printf("x=%d 일 때, 참인 것은%n", x);
+		if (x == 0)
+			System.out.println("x==0");
+		if (x != 0) //t
+			System.out.println("x!=0");
+		if (!(x == 0)) //t
+			System.out.println("!(x==0)");
+		if (!(x != 0))
+			System.out.println("!(x!=0)");
+	}
+  	public static void main(String[] args) {
+		// 예제 4-3
+		Scanner scan = new Scanner(System.in);
+		System.out.println("숫자를 하나 입력하세요.");
+
+		int num = scan.nextInt();
+		if (num == 0) {
+			System.out.println("입력하신 숫자는 0입니다");
+		} else {
+			System.out.println("입력하신 숫자는 0이 아닙니다.");
+		}
+	}
+  public static void main(String[] args) {
+		// 예제 4-4
+		Scanner scan = new Scanner(System.in);
+		System.out.println("점수를 입력하세요.>");
+		int num = scan.nextInt();
+		char grade;
+		if (num >= 90) {
+			grade = 'A';
+		} else if (num >= 80) {
+			grade = 'B';
+		} else if (num >= 70) {
+			grade = 'C';
+		} else {
+			grade = 'D';
+		}
+		System.out.println("당신의 학점은" + grade + "입니다");
+	}
+  

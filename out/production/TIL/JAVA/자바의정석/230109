@@ -1,0 +1,24 @@
+instanceof연산자:참조변수가 참조하고 있는 인스턴스의 실제 타입을 알아보기 위해 사용
+주로 조건문에 사용 
+instanceof의 왼쪽에는 참조변수, 오른쪽에는 타입이 피연산자로 위치
+
+instanceof를 이용한 연간결과로 true를 얻었다는 것은 참조변수가 검사한 타입으로 형변환이 가능하다는 뜻이다.
+
+public class InstanceofTest {
+    public static void main(String[] args) {
+       FireEngine fe = new FireEngine();
+
+       if(fe instanceof FireEngine){
+           System.out.println("This is a FireEngine instance.");
+       }
+       if(fe instanceof Car){
+           System.out.println("This is a Car instance.");
+       }
+       if(fe instanceof Object){
+           System.out.println("This is an Object instance");
+       }
+        System.out.println(fe.getClass().getName());
+        }
+    }
+class Car{}
+class FireEnginge extends Car{}

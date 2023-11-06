@@ -1,0 +1,201 @@
+//7-2
+public class DrawShape {
+    public static void main(String[] args) {
+        Point[] p = {
+                new Point(100,100),
+                new Point(140,50),
+                new Point(200,100)
+        };
+        Triangle t = new Triangle(p);
+        Circle c = new Circle(new Point(150,50),50);
+
+        t.draw();
+        c.draw();
+    }
+}
+
+class Shape{
+    String color = "black";
+    void draw(){
+        System.out.printf("[color=%s]%n",color);
+    }
+}
+
+class Point{
+    int x;
+    int y;
+
+    Point(int x, int y){
+        this.x=x;
+        this.y=y;
+    }
+    Point(){
+        this(0,0);
+    }
+    String getXY(){
+        return "("+x+","+y+")";
+    }
+}
+
+class Circle extends Shape{
+    Point center;
+    int r;
+
+    Circle(){
+        this(new Point(0,0),0);
+    }
+   Circle(Point center, int r){
+        this.center = center;
+        this.r=r;
+   }
+   void draw(){
+       System.out.printf("[center=(%d,%d), r=%d, color=%s]%n", center.x, center.y, r,color);
+   }
+}
+
+class Triangle extends Shape{
+    Point[] p = new Point[3];
+
+    Triangle(Point[] p){
+        this.p=p;
+    }
+    void draw(){
+        System.out.printf("[p1=%s, p2=%s,p3=%s,color=%s]%n",p[0].getXY(),p[1].getXY(),p[2].getXY(),color);
+    }
+}
+
+//7-4
+class Tv{
+    boolean power;
+    int channel;
+
+    void power() {power= !power;}
+    void channelUp() {++channel;}
+    void channelDown(){--channel;}
+}
+
+class VCR{
+    boolean power;
+    int counter=0;
+    void power(){ power = !power; }
+    void play(){/*내용생략*/}
+    void stop(){/*내용생략*/}
+    void rew(){/*내용생략*/}
+    void ff(){/*내용생략*/}
+}
+class TVCR extends Tv {
+    VCR vcr = new VCR(); //VCR클래스를 포함시켜서 사용한다.
+    void play(){
+        vcr.play();
+    }
+    void stop(){
+        vcr.stop();
+    }
+    void rew(){
+        vcr.rew();
+    }
+
+    void ff(){
+        vcr.ff();
+    }
+     
+}
+//7-5
+public class SuperTest {
+    public static void main(String[] args) {
+    Child c = new Child();
+    c.method();
+    }
+}
+
+class Parent{
+    int x =10;
+}
+
+class Child extends Parent{
+    void method(){
+        System.out.println("x="+x);
+        System.out.println("this.x="+this.x);
+        System.out.println("super.x="+super.x);
+    }
+}
+//7-6
+public class SuperTest2 {
+    public static void main(String[] args) {
+    Child c = new Child();
+    c.method();
+    }
+}
+
+class Parent{
+    int x =10;
+}
+
+class Child extends Parent{
+    int x =20;
+    void method(){
+        System.out.println("x="+x);
+        System.out.println("this.x="+this.x);
+        System.out.println("super.x="+super.x);
+    }
+}
+
+//7-7
+public class PointTest { 
+    public static void main(String[] args) {
+    
+    }
+}
+
+class Point{
+    int x,y;
+    Point(int x, int y){
+        this.x=x;
+        this.y=y;
+    }
+    String getLocation(){
+        return "x : "+x+", y : "+y;
+    }
+}
+
+class Point3D extends Point{
+    int z;
+    
+    Point3D(int x, int y, int z){
+        super(x,y);//조상 클래스의 멤버변수는 조상의 생성자에 의해 초기화되도록 해야한다.
+        this.z=z;
+    }
+    String getLocation(){
+        return "x : "+x+", y : "+y+",z : "+z;
+    }
+}
+//7-8
+public class PoinTest2 {
+    public static void main(String[] args) {
+        Point3D p3 = new Point3D();
+        System.out.println("p3.x="+p3.x);
+        System.out.println("p3.y="+p3.y);
+        System.out.println("p3.z="+p3.z);
+    }
+}
+
+class Point{
+   int x=10;
+   int y=20;
+
+   Point(int x, int y){
+       this.x=x;
+       this.y=y;
+   }
+}
+
+class Point3D extends Point{
+  int z;
+  Point3D(){
+      this(100,200,300);
+  }
+  Point3D(int x, int y, int z){
+      super(x,y);
+      this.z=z;
+  }
+}

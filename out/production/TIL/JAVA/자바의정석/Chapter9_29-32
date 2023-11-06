@@ -1,0 +1,103 @@
+package JAVA.자바의정석;
+
+import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+//예제 9-29
+class RandomEx3{
+    public static void main(String[] args) {
+        for (int i = 0; i < 10; i++)
+            System.out.println(getRand(5,10)+",");
+        System.out.println();
+
+        int[] result = fillRand(new int[10], new int[]{2,3,7,5});
+
+        System.out.println(Arrays.toString(result));
+
+    }
+
+
+    public static int[] fillRand(int[] arr, int from, int to){
+        for(int i=0; i<arr.length; i++)
+            arr[i] =getRand(from, to);
+        return arr;
+    }
+    public static int[] fillRand(int[] arr, int[] data){
+        for (int i = 0; i < arr.length; i++)
+            arr[i] = data[getRand(0, data.length-1)];
+        return arr;
+
+    }
+
+    public static int getRand(int from, int to){
+        return (int)(Math.random() * (Math.abs(to-from)+1)+Math.min(from,to));
+    }
+}
+
+//예제 9-30
+class RandomEx4 {
+    final static int RECORD_NUM = 10;
+    final static String TABLE_NAME = "TEST_TABLE";
+    final static String[] CODE1 = {"010", "011", "017", "018", "019"};
+    final static String[] CODE2 = {"여자", "남자"};
+    final static String[] CODE3 = {"10대", "20대", "30대", "40대", "50대"};
+
+    public static void main(String[] args) {
+        for (int i = 0; i < RECORD_NUM; i++) {
+            System.out.println(" INSERT INTO "+TABLE_NAME
+                + "VALUES ("
+                + " '"+getRandArr(CODE1) +"'"
+                + ", "+getRandArr(CODE2) +"'"
+                + ", "+getRandArr(CODE3) +"'"
+                + ", "+getRand(100,200) +"'"
+                + "); ");
+
+
+        }
+    }
+    public static String getRandArr(String[] arr){
+        return arr[getRand(arr.length-1)];
+    }
+
+    public static int getRand(int n) {return getRand(0,n);}
+    public static int getRand(int from, int to){
+        return (int)(Math.random()*(Math.abs(to-from)+1)+Math.min(from,to));
+    }
+}
+
+//예제 9-31
+class RegularEx1{
+    public static void main(String[] args) {
+        String[] data = {"bat","baby", "bonus","cA","ca","co","c.","c0","car","combat","count","date","disc"};
+
+        Pattern p = Pattern.compile("c[a-z]*");
+
+        for (int i = 0; i < data.length; i++) {
+            Matcher m = p.matcher(data[i]);
+            if(m.matches())
+                System.out.println(data[i]+",");
+
+        }
+    }
+}
+
+//예제 9-32
+class RegularEx2{
+    public static void main(String[] args) {
+        String[] data = {"bat","baby", "bonus","c","cA","ca","co","c.","c0","c#","car","combat","count","date","disc"};
+        String[] pattern = {".*", "c[a-z]","c[a-z]","c[a-zA-z]","c[a-zA-Z0-9]","c.","c.*","c\\w","c\\d","c.*t","[b|c].*",".*a.+","[b|c].{2}"};
+
+        for (int x = 0; x < pattern.length; x++) {
+            Pattern p = Pattern.compile(pattern[x]);
+            System.out.println("Pattern :"+pattern[x]+ "결과");
+            for (int i = 0; i < data.length; i++) {
+                Matcher m = p.matcher(data[i]);
+                if(m.matches())
+                    System.out.println(data[i]+",");
+            }
+            System.out.println();
+
+        }
+    }
+}

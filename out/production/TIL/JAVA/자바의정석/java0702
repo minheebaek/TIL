@@ -1,0 +1,52 @@
+package chapter3;
+
+import java.util.Scanner;
+
+public class 연습3 {
+
+	public static void main(String[] args) {
+		// 예제 4-5
+		//score>=90 A, 98<=score A+ 90<=score<94 A-
+		
+		Scanner scan =new Scanner(System.in);
+		int score =scan.nextInt();
+		
+		System.out.println("점수를 입력해주세요.>");
+		
+		System.out.println("당신의 점수는 "+score+"입니다.");
+		char grade=' ', opt = '0';
+		if(score>=90) {
+			grade='A';
+			if(score>=98) {
+				opt='+';
+			}
+			else if(score<94){
+				opt='-';
+			}	
+			}
+		else if(score>=80) {
+			grade='B';
+			if(score>=88) {
+				opt='+';
+			}
+			else if(score<84) {
+				opt='-';
+			}
+		
+		}
+		else if(score>=70) {
+			grade='C';
+			if(score>=78) {
+				opt='+';
+			}
+			else if(score<74) {
+				opt='-';
+			}
+		}
+		else {
+			grade='D';
+		}
+		System.out.printf("당신의 학점은 %c%c입니다.%n",grade,opt);
+		
+	}
+}
